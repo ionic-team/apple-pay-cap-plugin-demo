@@ -1,0 +1,25 @@
+on: [push]
+
+jobs:
+  deploy_job:
+    runs-on: ubuntu-latest
+    name: build&deploy
+    steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build:ci
+
+      - name: Deployment
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        with:
+          username: "dallas"
+          server: "dallastjames.com"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          local_path: "./www/*"
+          remote_path: "/var/www/applepay"
+          args: "-o ConnectTimeout=5"
