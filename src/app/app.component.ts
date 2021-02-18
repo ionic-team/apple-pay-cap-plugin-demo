@@ -15,7 +15,7 @@ export class AppComponent {
   initializeApp() {
     const { SplashScreen, StatusBar } = Plugins;
     StatusBar.setStyle({
-      style: StatusBarStyle.Light,
+      style: StatusBarStyle.Dark,
     });
     SplashScreen.hide();
   }
