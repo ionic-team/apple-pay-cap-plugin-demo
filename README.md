@@ -6,12 +6,17 @@ This is a simple demo application used to show how to implement the Capacitor Ap
 
 ### Installing Dependencies
 
-Because the plugin is currently unpublished, this demo installs the plugin from a local directory. It should be in the following location:
+This project is already configured with the plugin, however you would typically install the plugin as follows:
 
-```
-/
-/ - /capacitor-plugin-apple-pay
-/ - /apple-pay-demo
+```bash
+$ npm i @ionic-enterprise/apple-pay
 ```
 
-Or, remove the plugin from the package.json and then install it by pointing to the newly checked out directory.
+Once the plugin is installed, in order for it to work correctly on the web, you need to register the plugin in the main.ts file
+
+```typescript
+// main.ts
+import '@ionic-enterprise/apple-pay';
+```
+
+After registering the plugin, you can consume the plugin similar to any other Capacitor plugin. See payments.service.ts file for a simple example of how you might abstract the code to work in your application.
